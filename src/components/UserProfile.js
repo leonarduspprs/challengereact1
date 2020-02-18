@@ -7,6 +7,7 @@ import Bio from "./Bio";
 function UserProfile() {
   return (
     <container>
+    
       <Avatar/>
       <Username/>
       <br/>

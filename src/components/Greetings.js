@@ -8,6 +8,4 @@ const Greetings = props => (
   </div>
 );
 
-
-
 export default Greetings;

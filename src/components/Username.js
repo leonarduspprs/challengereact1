@@ -1,16 +1,15 @@
-import React from 'react';
+import React from "react";
 
 function Username(props) {
-    return (
-        <div>
-            <h3> username -> {props.uname}</h3>
-        </div>
-    )
+  return (
+    <div>
+      <h3 style={{color: "red"}} > username -> {props.uname}</h3>
+    </div>
+  );
 }
 
 Username.defaultProps = {
-    uname: "User"
-  };
+  uname: "User"
+};
 
-export default Username
-
+export default Username;
