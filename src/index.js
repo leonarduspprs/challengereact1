@@ -8,6 +8,8 @@ import Notfound from "./components/Notfound";
 // import Valhookform from "./validations/Valhookform";
 import HookFormTest from "./validations/HookFormTest";
 
+import Profile from "./components/Profile";
+
 import SingleForm from "./components/SingleForm";
 import NameForm from "./components/NameForm";
 import * as serviceWorker from "./serviceWorker";
@@ -25,7 +27,7 @@ import {
   DropdownItem,
   NavbarText
 } from "reactstrap";
-  
+
 const routing = (
   <Router>
     <div>
@@ -37,6 +39,9 @@ const routing = (
           </NavItem>
           <NavItem>
             <NavLink href="/About">About</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/profile">Profile</NavLink>
           </NavItem>
           <NavItem>
             <NavLink href="/SingleForm">SingleForm</NavLink>
@@ -74,6 +79,7 @@ const routing = (
       <Route exact path="/" component={App} />
       <Route path="/about/" component={About} />
       <Route path="/about/:number" component={About} />
+      <Route path="/profile" component={Profile} />
       <Route path="/singleform" component={SingleForm} />
       <Route path="/nameform" component={NameForm} />
       {/* <Route path="/valhookform" component={Valhookform} /> */}

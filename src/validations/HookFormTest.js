@@ -12,7 +12,7 @@ export default function HookForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="container mt-4">
+      <div className="container mt-4 ">
         <div className="form-group">
           <label>Nama</label>
           <input

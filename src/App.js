@@ -6,13 +6,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 function App() {
-  return (
-    <container>
-      <div className="text-center">
-        <UserProfile />
-      </div>
-    </container>
-  );
+  // return (
+  //   <container>
+  //     <div className="text-center">
+  //       <UserProfile />
+  //     </div>
+  //   </container>
+  // );
 }
 
 export default App;

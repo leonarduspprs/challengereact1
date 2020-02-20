@@ -33,6 +33,9 @@ class NameForm extends React.Component {
     return (
       <div>
         <div className="container mt-4">
+          <div className="form-group">
+            <div className="alert-primary"></div>
+          </div>
           <form onSubmit={this.handleSubmit}>
             <label>Is going:</label>
             <input
@@ -54,16 +57,20 @@ class NameForm extends React.Component {
             <br />
 
             <div className="form-group">
-            <label>Nama:</label>
-            <input
-              className="form-control"
-              name="nama"
-              type="text"
-              value={this.state.nama}
-              onChange={this.handleInputChange}
-            />
+              <label>Nama:</label>
+              <input
+                className="form-control"
+                name="nama"
+                type="text"
+                value={this.state.nama}
+                onChange={this.handleInputChange}
+              />
             </div>
-            <input className="btn btn-info btn-lg" type="submit" value="Submit" />
+            <input
+              className="btn btn-info btn-lg"
+              type="submit"
+              value="Submit"
+            />
           </form>
         </div>
       </div>
