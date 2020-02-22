@@ -7,11 +7,13 @@ import About from "./components/About";
 import Notfound from "./components/Notfound";
 // import Valhookform from "./validations/Valhookform";
 import HookFormTest from "./validations/HookFormTest";
-
 import Profile from "./components/Profile";
-
 import SingleForm from "./components/SingleForm";
 import NameForm from "./components/NameForm";
+import DataBuku from "./databuku/GetBuku";
+import PostBuku from "./databuku/PostBuku";
+import DeleteBuku from "./databuku/HapusBuku";
+import EditBuku from "./databuku/EditBuku";
 import * as serviceWorker from "./serviceWorker";
 import {
   Collapse,
@@ -57,17 +59,16 @@ const routing = (
           </NavItem>
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
-              Others
+              DataBuku
             </DropdownToggle>
             <DropdownMenu right>
-              <DropdownItem href="https://reactstrap.github.io/components/alerts/">
-                Learn Reactstrap components
+              <DropdownItem href="/DataBuku">
+                Lihat Data Buku
               </DropdownItem>
-              <DropdownItem href="https://instagram.com/leonarduspprs">
-                Instagram
+              <DropdownItem href="/addBuku">
+                Tambah Data Buku
               </DropdownItem>
               <DropdownItem divider />
-              <DropdownItem>Reset</DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>
@@ -84,6 +85,12 @@ const routing = (
       <Route path="/nameform" component={NameForm} />
       {/* <Route path="/valhookform" component={Valhookform} /> */}
       <Route path="/hookform" component={HookFormTest} />
+      <Route path="/DataBuku" component={DataBuku} />
+
+      <Route path="/EditBuku/:id" component={EditBuku} />
+      <Route path="/deleteBuku/:number" component={DeleteBuku} />
+
+      <Route path="/addBuku" component={PostBuku} />
       <Route component={Notfound} />
     </Switch>
   </Router>
@@ -91,6 +98,7 @@ const routing = (
 
 // ReactDOM.render(<App />, document.getElementById("root"));
 ReactDOM.render(routing, document.getElementById("root"));
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
