@@ -21,6 +21,8 @@ function Login() {
         window.sessionStorage.setItem("roles", result.data.roles.roles[0].name);
         window.sessionStorage.setItem("name", result.data.roles.name);
         window.sessionStorage.setItem("token", result.data.accesToken);
+        alert("Login succes");
+        
         history.push("/PerpusHome");
         console.log(result);
       } else {

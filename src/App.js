@@ -8,7 +8,7 @@ function App() {
   return (
     <container>
       <div className="text-center">
-        <UserProfile />
+        <h1>welcome</h1>
       </div>
     </container>
   );

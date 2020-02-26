@@ -34,40 +34,38 @@ export function PerpusHome() {
     });
   };
   if (window.sessionStorage.getItem("roles") === "ADMIN") {
-  
-  return (
-    <div>
-      <div className="container mt-5">
-        <h4 className="text-right">
-          U are logged in as {window.sessionStorage.getItem("roles")}
-        </h4>
-        <h4 className="text-right">
-          Welcome {window.sessionStorage.getItem("name")}
-        </h4>
-        <h1 className="text-center">Data Buku</h1>
-        <table id="book" className="table table-bordered">
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>title</th>
-              <th>author</th>
-              <th>publish_date</th>
-              <th>pages</th>
-              <th>language</th>
-              <th>publisher id</th>
-              <th>Action</th>
-            </tr>
-          </thead>
+    return (
+      <div>
+        <div className="container mt-5">
+          <h4 className="text-right">
+            U are logged in as {window.sessionStorage.getItem("roles")}
+          </h4>
+          <h4 className="text-right">
+            Welcome {window.sessionStorage.getItem("name")}
+          </h4>
+          <h1 className="text-center">Data Buku</h1>
+          <table id="book" className="table table-bordered">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>title</th>
+                <th>author</th>
+                <th>publish_date</th>
+                <th>pages</th>
+                <th>language</th>
+                <th>publisher id</th>
+                <th>Action</th>
+              </tr>
+            </thead>
 
-          <tbody>{renderTable()}</tbody>
-        </table>
+            <tbody>{renderTable()}</tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  );
-}
-else {
-return("INI LAMAN USER")
-}
+    );
+  } else {
+    return "you are not logged in yet";
+  }
 }
 
 export default PerpusHome;
