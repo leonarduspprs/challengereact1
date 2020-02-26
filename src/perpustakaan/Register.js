@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 function PostUsingHook() {
   const [form, setValues] = useState({
-    author: "",
-    title: "",
-    publish_date: "",
-    pages: "",
-    language: "",
-    publisher_id: ""
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+    roles: ["USER"]
   });
   // const printValues = e => {
   //   e.preventDefault();
@@ -16,17 +15,17 @@ function PostUsingHook() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const result = await axios.post("http://localhost:3000/books", {
-        author: form.author,
-        title: form.title,
-        publish_date: form.publish_date,
-        pages: form.pages,
-        language: form.language,
-        publisher_id: form.publisher_id
+      const result = await axios.post("http://localhost:8080/api/auth/signup", {
+        name: form.name,
+        username: form.username,
+        email: form.email,
+        password: form.password,
+        roles: form.roles
       });
 
       if (result.status === 201) {
         alert("Data inserted sucessfuly!");
+        console.log(result);
       } else {
         throw new Error("Failed to insert data!");
       }
@@ -44,54 +43,43 @@ function PostUsingHook() {
   return (
     <div className="container mt-5">
       <form onSubmit={handleSubmit}>
-        <label>Author:</label>
+        <label>Name:</label>
         <input
           className="form-control"
-          value={form.author}
-          name="author"
+          value={form.name}
+          name="name"
           onChange={updateField}
         />
         <br />
-        <label>Title:</label>
+        <label>Username</label>
         <input
           className="form-control"
-          value={form.title}
-          name="title"
+          value={form.username}
+          name="username"
           onChange={updateField}
         />
 
-        <label>publish_date:</label>
+        <label>Email</label>
         <input
-          type="date"
+          type="text"
           className="form-control"
-          value={form.publish_date}
-          name="publish_date"
+          value={form.email}
+          name="email"
           onChange={updateField}
         />
 
-        <label>pages:</label>
+        <label>Password</label>
         <input
+          type="password"
           className="form-control"
-          value={form.pages}
-          name="pages"
+          value={form.password}
+          name="password"
           onChange={updateField}
         />
-        <label>language :</label>
-        <input
-          className="form-control"
-          value={form.language}
-          name="language"
-          onChange={updateField}
-        />
-        <label>publisher_id:</label>
-        <input
-          className="form-control"
-          value={form.publisher_id}
-          name="publisher_id"
-          onChange={updateField}
-        />
+        {/* <input type="hidden" value="User" name="roles" onChange={updateField} /> */}
         <br />
-        <button>Submit</button>
+        <button 
+          className="btn btn-primary" >Submit</button>
       </form>
     </div>
   );

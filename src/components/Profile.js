@@ -1,5 +1,4 @@
 import React from "react";
-import Greetings from "./Greetings";
 import Avatar from "./Avatar";
 import Bio from "./Bio";
 

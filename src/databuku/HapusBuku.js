@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import axios from "axios";
 import GetBuku from "./GetBuku";
 
@@ -19,7 +19,6 @@ function HapusBuku(props) {
     catch (err) {
       alert(err);
     }
-    // console.log(data);
   }, []);
 
   console.log(data);

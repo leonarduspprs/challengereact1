@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export function App() {
-  const url = "http://localhost:3000/books";
+export function PerpusHome() {
+  const url = "http://localhost:8080/books";
   const [data, setData] = useState({ data: [] });
   useEffect(() => {
-    axios.get(url).then(json => setData(json.book));
+    axios.get(url).then(json => setData(json.data));
   }, []);
   const renderTable = () => {
     return data.data.map(book => {
@@ -33,9 +33,17 @@ export function App() {
       );
     });
   };
+  if (window.sessionStorage.getItem("roles") === "ADMIN") {
+  
   return (
     <div>
       <div className="container mt-5">
+        <h4 className="text-right">
+          U are logged in as {window.sessionStorage.getItem("roles")}
+        </h4>
+        <h4 className="text-right">
+          Welcome {window.sessionStorage.getItem("name")}
+        </h4>
         <h1 className="text-center">Data Buku</h1>
         <table id="book" className="table table-bordered">
           <thead>
@@ -57,5 +65,9 @@ export function App() {
     </div>
   );
 }
+else {
+return("INI LAMAN USER")
+}
+}
 
-export default App;
+export default PerpusHome;
