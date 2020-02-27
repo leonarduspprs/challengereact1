@@ -62,7 +62,7 @@ const Navigation = () => {
                 <DropdownItem to="/getuser" tag={RRNavLink}>
                   Data User
                 </DropdownItem>
-                <DropdownItem to="/dataorder" tag={RRNavLink}>
+                <DropdownItem to="/getorder" tag={RRNavLink}>
                   Data Order
                 </DropdownItem>
                 <DropdownItem divider />

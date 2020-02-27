@@ -9,8 +9,10 @@ import RegisterPerpus from "./perpustakaan/Register";
 import Notfound from "./components/Notfound";
 import GetUser from "./perpustakaan/GetUser";
 import GetBookPerpus from "./perpustakaan/GetBooks";
-import DeleteBookPerpus from "./perpustakaan/DeleteBooks";
+import EditBookPerpus from "./perpustakaan/EditBooks";
+import getOrderPerpus from "./perpustakaan/GetOrder";
 
+import getOrderById from "./perpustakaan/GetOrderById";
 function App() {
   return (
     <Router>
@@ -24,7 +26,9 @@ function App() {
           <Route path="/registerperpus" component={RegisterPerpus} />
           <Route path="/getuser" component={GetUser} />
           <Route path="/getbooksperpus" component={GetBookPerpus} />
-          <Route path="/getbooksperpus/:id" component={GetBookPerpus} />
+          <Route path="/editbooksperpus/:id" component={EditBookPerpus} />
+          <Route path="/getorder" component={getOrderPerpus} />
+          <Route path="/getorderbyid/:id" component={getOrderById} />
           <Route component={Notfound} />
         </Switch>
       </Main>

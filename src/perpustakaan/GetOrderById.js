@@ -1,19 +1,19 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
 
-function User() {
+function Books(props) {
   const [data, setData] = useState([]);
+  let id = window.sessionStorage.getItem("userId");
 
   useMemo(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:8080/api/users", {
+      const result = await axios("http://localhost:8080/orders/" + id, {
         headers: {
           Authorization: window.sessionStorage.getItem("token")
         }
       });
-      setData(result.data.user);
-
       console.log(result);
+      setData(result.data.user.books);
     };
     try {
       fetchData();
@@ -22,28 +22,30 @@ function User() {
     }
   }, []);
 
-  let no = 1;
-  if (window.sessionStorage.getItem("roles") !== "ADMIN")
-    return <h1>Requided admin previllege</h1>;
+    
+    let no = 1;
+  if (data.length === 0) return <h1>You don't have any order</h1>;
   return (
     <React.Fragment>
-      <h1>Data User</h1>
-      <table id="book" className="table table-bordered container mt-5">
+      <a href="/" className="btn btn-primary mb-5">
+        Kembali
+      </a>
+      <table className="table">
         <thead>
           <tr>
             <td>No.</td>
-            <td>Name</td>
-            <td>Username</td>
-            <td>Email</td>
+            <td>Title</td>
+            <td>Rent time</td>
           </tr>
         </thead>
         <tbody>
           {data.map((item, id) => (
             <tr key={id}>
               <td>{no++}</td>
-              <td>{item.name}</td>
-              <td>{item.username}</td>
-              <td>{item.email}</td>
+              <td>
+                <a>{item.title}</a>
+              </td>
+              <td>{item.orders.createdAt}</td>
             </tr>
           ))}
         </tbody>
@@ -52,4 +54,4 @@ function User() {
   );
 }
 
-export default User;
+export default Books;

@@ -1,8 +1,21 @@
 import React, { useState, useMemo } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 function Books() {
   const [data, setData] = useState([]);
+
+  const DeleteBook = async id => {
+    let result = await axios.delete("http://localhost:8080/books/" + id, {
+      headers: {
+        Authorization: window.sessionStorage.getItem("token")
+      }
+    });
+    if (result.status === 200) {
+      alert("Book has been deleted!");
+      window.location.replace("/getbooksperpus");
+    }
+  };
 
   useMemo(() => {
     const fetchData = async () => {
@@ -24,12 +37,18 @@ function Books() {
   }, []);
 
   let no = 1;
+
   if (window.sessionStorage.getItem("roles") !== "ADMIN")
-    return <h1>Requided admin previllege</h1>;
+    return (
+      <h1>
+        admin previllege required <br />)
+      </h1>
+    );
   return (
     <React.Fragment>
-        <h1>Data Buku</h1>
-      <table className="table" id="book" className="table table-bordered">
+      <h1>Data Buku</h1>
+
+      <table id="book" className="table table-bordered">
         <thead>
           <tr>
             <td>No.</td>
@@ -53,10 +72,21 @@ function Books() {
               <td>{item.language}</td>
               <td>{item.publisher_id}</td>
               <td>
-              <a href={"/deleteBuku/" + item.id}>
-                {" "}
-                <button className="btn btn-danger">Delete</button>
-              </a>
+                <a
+                  className="btn btn-success"
+                  href={"/editbooksperpus/" + item.id}
+                >
+                  Ubah
+                </a>
+                <a>
+                  <button
+                    onClick={() => DeleteBook(item.id)}
+                    className="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                </a>
+                <a></a>
               </td>
             </tr>
           ))}

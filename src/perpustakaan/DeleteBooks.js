@@ -7,14 +7,13 @@ function DeleteBooks(props) {
   useMemo(() => {
     const fetchData = async () => {
       const result = await axios.delete(
-        `http://localhost:3000/books/${props.match.params.number}`, {
+        `http://localhost:8080/books/${props.match.params.id}`, {
             headers: {
               Authorization: window.sessionStorage.getItem("token")
             }
           }
       );
       setData(result.data);
-      alert("Data deleted sucessfuly!");
     };
     try {
       fetchData();

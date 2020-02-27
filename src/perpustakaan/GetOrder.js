@@ -1,19 +1,19 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
 
-function User() {
+function Order(props) {
   const [data, setData] = useState([]);
+  let id = props.match.params.id;
 
   useMemo(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:8080/api/users", {
+      const result = await axios("http://localhost:8080/orders/", {
         headers: {
           Authorization: window.sessionStorage.getItem("token")
         }
       });
+      console.log(result.data.user);
       setData(result.data.user);
-
-      console.log(result);
     };
     try {
       fetchData();
@@ -27,23 +27,22 @@ function User() {
     return <h1>Requided admin previllege</h1>;
   return (
     <React.Fragment>
-      <h1>Data User</h1>
-      <table id="book" className="table table-bordered container mt-5">
+      <table className="table table-bordered">
         <thead>
           <tr>
             <td>No.</td>
-            <td>Name</td>
-            <td>Username</td>
-            <td>Email</td>
+            <td>name</td>
           </tr>
         </thead>
         <tbody>
           {data.map((item, id) => (
             <tr key={id}>
               <td>{no++}</td>
-              <td>{item.name}</td>
-              <td>{item.username}</td>
-              <td>{item.email}</td>
+              <td>
+                <a href={"getorderbyid/" + item.id}>
+                  {item.name}
+                </a>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -52,4 +51,4 @@ function User() {
   );
 }
 
-export default User;
+export default Order;
