@@ -4,11 +4,10 @@ import Navigation from "../components/Navigation";
 const Main = props => {
   return (
     <>
-      <Navigation />
-      <Container fluid={true} className="mt-2">
-        <Col>{props.children}</Col>
-        <Col>Footer</Col>
-      </Container>
+      <div id="wrapper">
+        <Navigation />
+        <div className="container mt-5 mb-5">{props.children}</div>
+      </div>
     </>
   );
 };

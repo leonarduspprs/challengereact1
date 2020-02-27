@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-function PostUsingHook() {
+import { useHistory } from "react-router-dom";
+
+function Register() {
+  const history = useHistory();
+
   const [form, setValues] = useState({
     name: "",
     username: "",
@@ -8,10 +12,6 @@ function PostUsingHook() {
     password: "",
     roles: ["USER"]
   });
-  // const printValues = e => {
-  //   e.preventDefault();
-  //   console.log(form);
-  // };
   const handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -25,7 +25,7 @@ function PostUsingHook() {
 
       if (result.status === 201) {
         alert("Data inserted sucessfuly!");
-        console.log(result);
+        history.push("/loginperpus");
       } else {
         throw new Error("Failed to insert data!");
       }
@@ -78,10 +78,9 @@ function PostUsingHook() {
         />
         {/* <input type="hidden" value="User" name="roles" onChange={updateField} /> */}
         <br />
-        <button 
-          className="btn btn-primary" >Submit</button>
+        <button className="btn btn-primary">Submit</button>
       </form>
     </div>
   );
 }
-export default PostUsingHook;
+export default Register;

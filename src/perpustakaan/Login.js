@@ -17,14 +17,18 @@ function Login() {
         password: form.password
       });
 
+      window.sessionStorage.setItem("roles", result.data.roles.roles[0].name);
+      window.sessionStorage.setItem("name", result.data.roles.name);
+      window.sessionStorage.setItem("token", result.data.accessToken);
+
       if (result.status === 200) {
-        window.sessionStorage.setItem("roles", result.data.roles.roles[0].name);
-        window.sessionStorage.setItem("name", result.data.roles.name);
-        window.sessionStorage.setItem("token", result.data.accesToken);
-        alert("Login succes");
-        
-        history.push("/PerpusHome");
-        console.log(result);
+        if (window.sessionStorage.getItem("roles") === "ADMIN") {
+          alert("Login succes");
+          history.push("/Profile");
+          console.log(result);
+        } else {
+          history.push("/About");
+        }
       } else {
         throw new Error("Gagal Login");
       }
