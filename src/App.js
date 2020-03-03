@@ -1,34 +1,45 @@
 import React from "react";
-import Home from "./components/Home";
-import Profile from "./components/Profile";
-import About from "./components/About";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Main from "./layout/Main";
-import LoginPerpus from "./perpustakaan/Login";
-import RegisterPerpus from "./perpustakaan/Register";
 import Notfound from "./components/Notfound";
-import GetUser from "./perpustakaan/GetUser";
-import GetBookPerpus from "./perpustakaan/GetBooks";
-import EditBookPerpus from "./perpustakaan/EditBooks";
-import getOrderPerpus from "./perpustakaan/GetOrder";
 
-import getOrderById from "./perpustakaan/GetOrderById";
+import Login from "./blog/Login";
+import Dashboard from "./blog/Dashboard";
+import GetBlogUser from "./blog/DataUser";
+import GetBlogUserById from "./blog/DataUserById";
+import UpdateStatus from "./blog/UpdateStatus";
+
+import GetArtikel from "./blog/GetArtikel";
+
+import DashboardUser from "./blog/DashboardUser";
+import PostArticle from "./blog/TambahArtikel";
+import MyArtikel from "./blog/MyArtikel";
+import AllArtikel from "./blog/AllArticle";
+
+
 function App() {
   return (
     <Router>
       <Main>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/home" component={Home} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/about" component={About} />
-          <Route path="/loginperpus" component={LoginPerpus} />
-          <Route path="/registerperpus" component={RegisterPerpus} />
-          <Route path="/getuser" component={GetUser} />
-          <Route path="/getbooksperpus" component={GetBookPerpus} />
-          <Route path="/editbooksperpus/:id" component={EditBookPerpus} />
-          <Route path="/getorder" component={getOrderPerpus} />
-          <Route path="/getorderbyid/:id" component={getOrderById} />
+          <Route exact path="/" component={Dashboard} />
+          {/* Endpoint Admin */}
+          {/* Manager  User */}
+          <Route path="/login" component={Login} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/getbloguser" component={GetBlogUser} />
+          <Route path="/getbloguserbyid/:id" component={GetBlogUserById} />
+          <Route path="/updatestatus/:id" component={UpdateStatus} />
+
+          {/* Manage Artikel */}
+          <Route path="/getartikel" component={GetArtikel} />
+
+          {/* Endpoint User */}
+          <Route path="/dashboarduser" component={DashboardUser} />
+          <Route path="/tambahartikel" component={PostArticle} />
+          <Route path="/getmyartikel" component={MyArtikel} />
+          <Route path="/getallartikel" component={AllArtikel} />
+
           <Route component={Notfound} />
         </Switch>
       </Main>

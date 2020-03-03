@@ -25,42 +25,32 @@ const Navigation = () => {
     let confirm = window.confirm("Anda yakin?");
     if (confirm) {
       window.sessionStorage.clear();
-      history.push("/loginperpus");
+      history.push("/login");
     }
   };
 
   if (window.sessionStorage.getItem("token") && role === "ADMIN") {
     return (
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href={"/"}>reactstrap</NavbarBrand>
+      <Navbar color="faded" light expand="md">
+        <NavbarBrand href={"/"}>NRDFTB</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink to="/home" tag={RRNavLink}>
-                Home
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/profile" tag={RRNavLink}>
-                Profile
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/about" tag={RRNavLink}>
-                About
+              <NavLink to="/dashboard" tag={RRNavLink}>
+                Dashboard
               </NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Perpustakaan
+                Data Blog
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem to="/getbooksperpus" tag={RRNavLink}>
-                  Data Buku
-                </DropdownItem>
-                <DropdownItem to="/getuser" tag={RRNavLink}>
+                <DropdownItem to="/getbloguser" tag={RRNavLink}>
                   Data User
+                </DropdownItem>
+                <DropdownItem to="/getartikel" tag={RRNavLink}>
+                  Data Artikel  
                 </DropdownItem>
                 <DropdownItem to="/getorder" tag={RRNavLink}>
                   Data Order
@@ -69,6 +59,7 @@ const Navigation = () => {
               <DropdownItem>Logout</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
+            
             <NavLink onClick={logout}>Logout</NavLink>
           </Nav>
         </Collapse>
@@ -82,33 +73,26 @@ const Navigation = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink to="/home" tag={RRNavLink}>
-                Home
+              <NavLink to="/dashboard" tag={RRNavLink}>
+                Dashboard
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/profile" tag={RRNavLink}>
-                Profile
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/about" tag={RRNavLink}>
-                About
+              <NavLink to="/getallartikel" tag={RRNavLink}>
+                Read Article
               </NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Perpustakaan
+                Artikel
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem to="/databuku" tag={RRNavLink}>
-                  Data Buku
+                <DropdownItem to="/getmyartikel" tag={RRNavLink}>
+                  Artikel Saya
                 </DropdownItem>
-                <DropdownItem to="/dataorder" tag={RRNavLink}>
-                  Data Order
+                <DropdownItem to="/tambahartikel" tag={RRNavLink}>
+                  Tambah Artikel
                 </DropdownItem>
-                <DropdownItem divider />
-              <DropdownItem>Logout</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavLink onClick={logout}>Logout</NavLink>
@@ -143,7 +127,7 @@ const Navigation = () => {
                 Perpustakaan
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem to="/loginperpus" tag={RRNavLink}>
+                <DropdownItem to="/login" tag={RRNavLink}>
                   Login
                 </DropdownItem>
                 <DropdownItem to="/registerperpus" tag={RRNavLink}>

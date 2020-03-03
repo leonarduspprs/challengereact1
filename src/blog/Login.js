@@ -25,10 +25,10 @@ function Login() {
       if (result.status === 200) {
         if (window.sessionStorage.getItem("roles") === "ADMIN") {
           alert("Login succes");
-          window.location.replace("/Dashboard");
-          console.log(result);
+          window.location.replace("/dashboard");
         } else {
-          history.push("/About");
+          alert("Login succes");
+          window.location.replace("/dashboarduser");
         }
       } else {
         throw new Error("Gagal Login");

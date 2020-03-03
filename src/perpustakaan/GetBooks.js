@@ -6,7 +6,7 @@ function Books() {
   const [data, setData] = useState([]);
 
   const DeleteBook = async id => {
-    let result = await axios.delete("http://localhost:8080/books/" + id, {
+    let result = await axios.put("http://localhost:8080/books/" + id, {
       headers: {
         Authorization: window.sessionStorage.getItem("token")
       }

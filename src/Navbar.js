@@ -35,8 +35,6 @@ function Navbar() {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem href="/perpusHome">Lihat Data Buku</DropdownItem>
-                {/* <DropdownItem href="/perpusregister">Register</DropdownItem>
-                <DropdownItem href="/perpuslogin">Login</DropdownItem> */}
                 <DropdownItem href="/perpuslogout">Logout</DropdownItem>
                 <DropdownItem divider />
               </DropdownMenu>
