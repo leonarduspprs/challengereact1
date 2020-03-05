@@ -1,12 +1,13 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
+import StatusArtikel from "./StatusArtikel"
 
 function DataArtikel() {
   const [data, setData] = useState([]);
   
   useMemo(() => {
     const fetchData = async () => {
-      const result = await axios("http://localhost:8080/artikel", {
+      const result = await axios("http://localhost:8080/artikelonadmin", {
         headers: {
           Authorization: window.sessionStorage.getItem("token")
         }
@@ -34,6 +35,7 @@ function DataArtikel() {
             <td>No</td>
             <td>Judul</td>
             <td>Penulis</td>
+            <td>StatusArtikel</td>
             <td>Aksi</td>
           </tr>
         </thead>
@@ -43,12 +45,15 @@ function DataArtikel() {
               <td>{no++}</td>
               <td>{item.judul}</td>
               <td>{item.user.nama}</td>
+              <td>{item.status}</td>
               <td><a
                   className="btn btn-info btn-xs"
                   href={"/getartikelbyid/" + item.id}
                 >
                   Lihat Detail
-                </a></td>
+                </a>
+                <a><StatusArtikel prmtr ={item.id}/></a>
+                </td>
             </tr>
           ))}
         </tbody>

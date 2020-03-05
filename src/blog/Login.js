@@ -19,8 +19,8 @@ function Login() {
       console.log(result);
 
       window.sessionStorage.setItem("roles", result.data.roles);
-      window.sessionStorage.setItem("name", result.data.nama);
       window.sessionStorage.setItem("token", result.data.accessToken);
+
 
       if (result.status === 200) {
         if (window.sessionStorage.getItem("roles") === "ADMIN") {
