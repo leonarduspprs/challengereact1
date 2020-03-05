@@ -10,6 +10,7 @@ import GetBlogUserById from "./blog/DataUserById";
 import UpdateStatus from "./blog/UpdateStatus";
 
 import GetArtikel from "./blog/GetArtikel";
+import GetArtikelById from "./blog/GetArtikelById";
 
 import DashboardUser from "./blog/DashboardUser";
 import PostArticle from "./blog/TambahArtikel";
@@ -33,6 +34,7 @@ function App() {
 
           {/* Manage Artikel */}
           <Route path="/getartikel" component={GetArtikel} />
+          <Route path="/getartikelbyid/:id" component={GetArtikelById} />
 
           {/* Endpoint User */}
           <Route path="/dashboarduser" component={DashboardUser} />

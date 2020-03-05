@@ -5,8 +5,8 @@ function UbahStatus(props) {
   const [data, setData] = useState([]);
 
   
-  const UpdateStatus = async id => {
-    let result = await axios.put("http://localhost:8080/user/" + id,{status : "Blocked"}, {
+  const UpdateStatus = async (id, statususer) => { 
+    let result = await axios.put("http://localhost:8080/user/" + id,{status : statususer}, {
       headers: {
         Authorization: window.sessionStorage.getItem("token")
       }
@@ -14,7 +14,7 @@ function UbahStatus(props) {
 
     
     if (result.status === 200) {
-      alert("User dinonaktifkan!");
+      alert("Data Diubah!");
       window.location.replace("/getbloguser")
     }
   };
@@ -50,7 +50,7 @@ function UbahStatus(props) {
     return (
       <div>
         <a>
-          <button className="btn btn-danger" onClick={() => UpdateStatus(props.prmtr)}>
+          <button className="btn btn-danger" onClick={() => UpdateStatus(props.prmtr,"Nonaktif")}>
             Nonaktifkan User
           </button>
         </a>
@@ -58,10 +58,12 @@ function UbahStatus(props) {
     );
   return (
     <div>
-      <a className="btn btn-warning" href={"/updatestatus/" + props.prmtr}>
-        Aktifkan User
-      </a>
-    </div>
+        <a>
+          <button className="btn btn-warning" onClick={() => UpdateStatus(props.prmtr,"Active")}>
+            Aktifkan User
+          </button>
+        </a>
+      </div>
   );
 }
 

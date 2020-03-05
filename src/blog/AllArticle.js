@@ -11,6 +11,7 @@ function DataSemuaArtikel() {
           Authorization: window.sessionStorage.getItem("token")
         }
       });
+      
       setData(result.data.user);
     };
     try {
@@ -29,10 +30,9 @@ function DataSemuaArtikel() {
         {data.map((item, id) => (
           <div key={id}>
             <div className="card" style={{ width: "55rem" }}>
-              <h1 className="card-title text-center">{item.judul}</h1>
+              <h1 className="card-title text-center"><a href={"/getartikelbyid/" + item.id}>{item.judul}</a></h1>
               <p className="card-body">{item.isi}</p>
               <h5 className="card-body text-right">Author : {item.user.nama}</h5>
-              <h5 className="card-body text-right">Status : {item.status}</h5>
             </div>
             <br />
           </div>

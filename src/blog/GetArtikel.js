@@ -27,7 +27,7 @@ function DataArtikel() {
     return <h1>Requided admin previllege</h1>;
   return (
     <React.Fragment>
-      <h1>Data User</h1>
+      <h1>Data Artikel</h1>
       <table id="penggunablog" className="table table-bordered container mt-5">
         <thead>
           <tr>

@@ -29,12 +29,12 @@ function DataUser(props) {
   if (window.sessionStorage.getItem("roles") !== "ADMIN")
     return <h1>Requided admin previllege</h1>;
   return (
-      <div className="Container mt-5">
+    <div className="Container mt-5">
       <h3>Nama: {data.nama}</h3>
       <h3>Username: {data.username}</h3>
-      <h3>Email:  {data.email}</h3>
+      <h3>Email: {data.email}</h3>
       <h3>Status: {data.status}</h3>
-      </div>
+    </div>
   );
 }
 
