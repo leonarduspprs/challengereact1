@@ -30,7 +30,6 @@ function UbahStatusArtikel(props) {
         }
       });
       setData(result.data.user[0]);
-      console.log(result.data.user[0].status);
 
       
     };

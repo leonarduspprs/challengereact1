@@ -6,24 +6,28 @@ function Register() {
   const history = useHistory();
 
   const [form, setValues] = useState({
-    name: "",
+    nama: "",
     username: "",
     email: "",
-    password: ""
+    password: "",
+    admin: "",
+    status : ""
   });
   const handleSubmit = async e => {
     e.preventDefault();
     try {
       const result = await axios.post("http://localhost:8080/api/auth/signup", {
-        name: form.name,
+        nama: form.name,
         username: form.username,
         email: form.email,
-        password: form.password
+        password: form.password,
+        admin: "USER",
+        status: "Active"
       });
 
       if (result.status === 201) {
         alert("Data inserted sucessfuly!");
-        history.push("/loginperpus");
+        history.push("/login");
       } else {
         throw new Error("Failed to insert data!");
       }

@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import axios from "axios";
 
-function DataUser(props) {
+function DataUserById(props) {
   const [data, setData] = useState([]);
 
   useMemo(() => {
@@ -38,4 +38,4 @@ function DataUser(props) {
   );
 }
 
-export default DataUser;
+export default DataUserById;

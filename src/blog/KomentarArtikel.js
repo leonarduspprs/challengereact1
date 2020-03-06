@@ -23,11 +23,38 @@ function KomentarArtikel(props) {
     }
   }, []);
 
+  const UbahStatusKomentar = async (id, StatusKomentar) => {
+    let result = await axios.put(
+      "http://localhost:8080/komentar/" + id,
+      { status: StatusKomentar },
+      {
+        headers: {
+          Authorization: window.sessionStorage.getItem("token")
+        }
+      }
+    );
+    if (result.status === 201) {
+      alert("ok");
+      window.location.replace(window.location.href);
+    }
+  };
+
+  const deleteKomentar = async id => {
+    let result = await axios.delete("http://localhost:8080/komentar/" + id, {
+      headers: {
+        Authorization: window.sessionStorage.getItem("token")
+      }
+    });
+    if (result.status === 200) {
+      alert("Comment has been deleted!");
+      window.location.replace(window.location.href);
+    }
+  };
+
   const [form, setValues] = useState({
     isikomentar: "",
     status: ""
   });
-  console.log("bruh");
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -63,37 +90,89 @@ function KomentarArtikel(props) {
     });
   };
 
+  let roleee = window.sessionStorage.getItem("roles");
+  console.log(roleee);
+
   return (
     <React.Fragment>
       <div className="container mt-5">
         <br />
-        <h4>Tambah Komentar : </h4>
-        <form onSubmit={handleSubmit}>
-          <textarea
-            className="form-control"
-            value={form.isikomentar}
-            placeholed="Masukkan Komentar"
-            name="isikomentar"
-            onChange={updateField}
-          /> <br/>
-          <button className="btn btn-success float-right" align="right">Tambah Komentar</button>
-        </form>
+        {window.sessionStorage.getItem("roles") ? (
+          <>
+            <h4>Tambah Komentar : </h4>{" "}
+            <form onSubmit={handleSubmit}>
+              <textarea
+                className="form-control"
+                value={form.isikomentar}
+                placeholed="Masukkan Komentar"
+                name="isikomentar"
+                onChange={updateField}
+              />{" "}
+              <br />
+              <button className="btn btn-primary float-right" align="right">
+                Tambah Komentar
+              </button>
+            </form>
+          </>
+        ) : (
+          ""
+        )}
       </div>
 
       <div className="comtainer mt-5">
-      <h4>Komentar Terdahulu </h4>
-      <br />
-      <div className="container mt 5">
-        {data.map((item, id) => (
-          <div key={id}>
-            <div className="card" style={{ width: "55rem" }}>
-              <h5>{item.user.nama} berkomentar..  </h5>
-              <h4>{item.isikomentar}</h4>
+        <h4>Komentar Terdahulu </h4>
+        <br />
+        <div className="container mt 5">
+          {data.map((item, id) => (
+            <div key={id}>
+              <div className="card" style={{ width: "55rem" }}>
+                <h5>{item.user.nama} berkomentar.. </h5>
+                <h4>{item.isikomentar}</h4>
+
+                <a>
+                  {window.sessionStorage.getItem("roles") === "ADMIN" ||
+                  window.sessionStorage.getItem("iduser") ===
+                    item.userId.toString() ? (
+                    <button
+                      onClick={() => deleteKomentar(item.id)}
+                      className="btn btn-danger float-right"
+                    >
+                      Hapus Komentar
+                    </button>
+                  ) : (
+                    ""
+                  )}
+                </a>
+
+                <form>
+                  {window.sessionStorage.getItem("roles") === "ADMIN" ? (
+                    item.status !== "Active" ? (
+                      <>
+                        <button
+                          onClick={() => UbahStatusKomentar(item.id, "Active")}
+                          className="btn btn-success float-right"
+                        >
+                          Show Komentar
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        onClick={() => UbahStatusKomentar(item.id, "hide")}
+                        className="btn btn-warning float-right"
+                      >
+                        Hide Komentar
+                      </button>
+                    )
+                  ) : (
+                    ""
+                  )}
+                </form>
+              </div>
+
+              <br />
             </div>
-            <br />
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
     </React.Fragment>
   );

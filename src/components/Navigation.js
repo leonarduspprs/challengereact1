@@ -32,7 +32,7 @@ const Navigation = () => {
   if (window.sessionStorage.getItem("token") && role === "ADMIN") {
     return (
       <Navbar color="faded" light expand="md">
-        <NavbarBrand href={"/"}>NRDFTB</NavbarBrand>
+        <NavbarBrand href={"/"}>Blognesia</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -50,25 +50,26 @@ const Navigation = () => {
                   Data User
                 </DropdownItem>
                 <DropdownItem to="/getartikel" tag={RRNavLink}>
-                  Data Artikel  
+                  Data Artikel
                 </DropdownItem>
-                <DropdownItem to="/getorder" tag={RRNavLink}>
-                  Data Order
+
+                <DropdownItem to="/tambahartikel" tag={RRNavLink}>
+                  Tambah Artikel
                 </DropdownItem>
                 <DropdownItem divider />
-              <DropdownItem>Logout</DropdownItem>
+                <DropdownItem>Logout</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            
+
             <NavLink onClick={logout}>Logout</NavLink>
           </Nav>
         </Collapse>
       </Navbar>
     );
-  } else if(window.sessionStorage.getItem("token") && role === "USER") {
+  } else if (window.sessionStorage.getItem("token") && role === "USER") {
     return (
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href={"/"}>reactstrap</NavbarBrand>
+      <Navbar color="faded" light expand="md">
+        <NavbarBrand href={"/"}>Blognesia</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -103,34 +104,24 @@ const Navigation = () => {
   } else {
     return (
       <Navbar color="light" light expand="md">
-        <NavbarBrand href={"/"}>reactstrap</NavbarBrand>
+        <NavbarBrand href={"/"}>Blognesia</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink to="/home" tag={RRNavLink}>
-                Home
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/profile" tag={RRNavLink}>
-                Profile
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/about" tag={RRNavLink}>
-                About
+              <NavLink to="/getallartikel" tag={RRNavLink}>
+                Read Article
               </NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Perpustakaan
+                Masuk
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem to="/login" tag={RRNavLink}>
                   Login
                 </DropdownItem>
-                <DropdownItem to="/registerperpus" tag={RRNavLink}>
+                <DropdownItem to="/register" tag={RRNavLink}>
                   Register
                 </DropdownItem>
                 {/* <DropdownItem divider />

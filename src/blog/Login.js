@@ -19,16 +19,16 @@ function Login() {
       console.log(result);
 
       window.sessionStorage.setItem("roles", result.data.roles);
+      window.sessionStorage.setItem("iduser", result.data.id);
       window.sessionStorage.setItem("token", result.data.accessToken);
-
 
       if (result.status === 200) {
         if (window.sessionStorage.getItem("roles") === "ADMIN") {
           alert("Login succes");
-          window.location.replace("/dashboard");
+          window.location.replace("/getartikel");
         } else {
           alert("Login succes");
-          window.location.replace("/dashboarduser");
+          window.location.replace("/getmyartikel");
         }
       } else {
         throw new Error("Gagal Login");

@@ -20,7 +20,6 @@ function DataSemuaArtikel() {
     }
   }, []);
 
-  let no = 1;
   return (
     <React.Fragment>
       <h1>Semua Artikel</h1>

@@ -6,6 +6,8 @@ function UbahStatus(props) {
 
   
   const UpdateStatus = async (id, statususer) => { 
+    console.log("masuk");
+    
     let result = await axios.put("http://localhost:8080/user/" + id,{status : statususer}, {
       headers: {
         Authorization: window.sessionStorage.getItem("token")
